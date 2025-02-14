@@ -8,6 +8,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+    <link rel="stylesheet" href="/lib/Leaflet.Pancontrol-master/src/L.Control.Pan.css">
+    <script src="/lib/Leaflet.Pancontrol-master/src/L.Control.Pan.js"></script>
 
     
 
@@ -57,17 +59,17 @@
         /* Button styling */
         .toggle-btn {
             position: fixed;
-            top: 10vh;
-            left: 10px;
+            top: 9rem;
+            left: 9px;
             background: #bfd7f1;
             color: white;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
-            width: 50px !important;
+            width: 52px !important;
             z-index: 1100;
-            font-size: 20px;
+            font-size: 10px;
         }
     
         .toggle-btn:hover {
@@ -169,7 +171,35 @@
         top:6px;
      }
 
-     
+     .leaflet-bar{
+       bottom:4rem;
+       
+    }
+    .leaflet-control-scale-line {
+        position: relative;
+       left :5px;
+        bottom:1rem;
+    }
+
+    .layer-option{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        white-space:nowrap;
+    }
+    .layer-icon {
+        width: 90px;  /* Adjust image size */
+        height: 40px;
+        object-fit: cover;
+    }
+    .leaflet-control-layers-base {
+        display: grid !important;
+        /*grid-template-columns: 1fr 1fr; /* Two-column layout */
+       /* gap: 5px;
+        */
+    }
+
      
     </style>
     
@@ -265,17 +295,21 @@
             //attribution: '&copy; OpenStreetMap contributors'
         //})//.addTo(map);
 
-        let baseLayers={
-            "Open Street":googleStreets,
-            "Google Hybrid":googleHybrid,
-            "Google Satellite":googleSat,
-            "Terrain Map":googleTerrain,
-        }
+        let baseLayers = {
+            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></div>": googleStreets,
 
+            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></img></div>":googleHybrid,
+
+            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></img>'</div>": googleSat,
+            
+            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></div>": googleTerrain,
+        };
+        
 
         let overLays={
            // "Parcell":parcellesLayer,
         }
+        
 
         L.control.layers(baseLayers, overLays).addTo(map);
 
@@ -496,11 +530,13 @@
 
         //ADD SCALE 
         L.control.scale({
-            position:"bottomleft"
+            position:"bottomright"
         }).addTo(map)
 
         //zoomControl Position 
         map.zoomControl.setPosition("bottomright");
+
+        let ctrP = L.control.pan().addTo(map);
 
     </script>
     <!--shortcut for creating multiple headin "h${heading $}*2"

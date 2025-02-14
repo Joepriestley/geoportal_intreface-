@@ -536,7 +536,7 @@
         //zoomControl Position 
         map.zoomControl.setPosition("bottomright");
 
-        let ctrP = L.control.pan().addTo(map);
+        let ctrP = L.control.pan({position:"topright"}).addTo(map);
 
     </script>
     <!--shortcut for creating multiple headin "h${heading $}*2"

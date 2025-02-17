@@ -3,17 +3,16 @@
         let allData;  // Stocker toutes les données pour filtrer sans recharger
 
 
-        let map = L.map('map').setView([30.57,-9.07],13);// Centré sur Maroc
+        let map = L.map('map').setView([30.57,-9.07],9);// Centré sur Maroc
 
         
-
        // L.control.browserPrint({position: 'topleft'}).addTo(map);
     
 
-        let googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
-            maxZoom: 20,
-            subdomains:['mt0','mt1','mt2','mt3']
-        })
+         //L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+           // maxZoom: 20,
+           // subdomains:['mt0','mt1','mt2','mt3']
+        //})
 
         let googleHybrid = L.tileLayer('http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}',{
             maxZoom: 20,
@@ -30,18 +29,18 @@
             subdomains:['mt0','mt1','mt2','mt3']
         })//.addTo(map);
 
-        //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            //attribution: '&copy; OpenStreetMap contributors'
-        //})//.addTo(map);
+        let googleStreets =L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        })//.addTo(map);
 
         let baseLayers = {
-            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></div>": googleStreets,
+            "<div class='layer-option'><img title='Google Street Map' src='/image/openstreet.JPG'  class='layer-icon'/></div>": googleStreets,
 
-            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></img></div>":googleHybrid,
+            "<div class='layer-option'><img title='Google Hybrid Map' src='/image/hybrid.JPG' class='layer-icon'/></img></div>": googleHybrid,
 
-            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></img>'</div>": googleSat,
-            
-            "<div class='layer-option'><img src='image/globetud.png' class='layer-icon'/></div>": googleTerrain,
+            "<div class='layer-option'><img title='Google Satellite Map' src='/image/sat.JPG' class='layer-icon'/></img></div>":googleSat,
+
+            "<div class='layer-option'><img title='Google Terrain Map' src='/image/terr.JPG' class='layer-icon'/></div>": googleTerrain,
         };
         
 
@@ -50,7 +49,7 @@
         }
         
 
-        L.control.layers(baseLayers, overLays).addTo(map);
+        L.control.layers(baseLayers, overLays,{collapsed:false}).addTo(map);
 
 
         // Charger les données depuis l'API
@@ -262,7 +261,7 @@
         $(document).ready(function () {
             map.on("mousemove", function (m) {
                 if (m.latlng) {
-                    $("#coordinates").html(`${m.latlng.lat.toFixed(7)}  ${m.latlng.lng.toFixed(7)}`);
+                    $("#coordinates").html(`${m.latlng.lat.toFixed(7)} ; ${m.latlng.lng.toFixed(7)}`);
                 }
             });
         });
@@ -270,17 +269,18 @@
 
         //scalebar 
         L.control.scale({
-            position:"bottomleft"
+            position:"bottomright"
         }).addTo(map)
 
         //zoomControl Position 
-        map.zoomControl.setPosition("topleft");
+        map.zoomControl.setPosition("bottomright");
         let ctrP = L.control.pan({position:"topright"}).addTo(map);
         //Mesure de distance et direction
         let mapRuler = L.control.ruler().addTo(map);
 
         // Fullscreen control
         map.addControl(new L.Control.FullScreen({
+            position:"topright"
            
         }));
 

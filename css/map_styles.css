@@ -143,7 +143,7 @@ position: absolute;
 bottom: 1rem;
 z-index: 1000;
 right: 45%;
-background: rgba(214, 213, 213, 0.36);
+background: rgba(214, 213, 213, 0.5);
 border-radius:15px;
 font-size: 350;
 font-weight: 300;
@@ -185,19 +185,50 @@ display: grid !important;
 }
 
 .leaflet-touch .leaflet-control-pan a{
-height:17px;
-width:17px;
+bottom: 0rem;
+height:15px;
+width:15px;
 border-radius: 50%;
 outline: none;
 }
 
 .leaflet-ruler {
 position: relative;
-top:3rem;
+top: 6rem;
+right:1.5rem;
+width: 30px;
+height: 30px;
+border-radius: 14%;
+}
+.leaflet-control-zoom {
+    position: relative;
+    right: 24px;
+    top: 5.5rem;
+   
+
 }
 
-.leaflet-control-fullscreen-button {
+/* .leaflet-control-fullscreen-button {
 background-size: cover !important;
 width: 36px !important;
 height: 36px !important;
+} */
+
+/* .leaflet-control-zoom  leaflet-control{
+    top: 0rem;
 }
+.leaflet-touch .leaflet-control-pan a {
+    position:absolute;
+    left:5px;
+    top: 150px;
+    display: block !important;
+}
+    */
+.leaflet-control-layers{
+    top: 1rem;
+    right:0.5rem;
+    display: block !important;
+} 
+
+   
+

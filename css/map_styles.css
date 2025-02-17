@@ -203,7 +203,7 @@ border-radius: 14%;
 .leaflet-control-zoom {
     position: relative;
     right: 24px;
-    top: 5.5rem;
+    top: 6.1rem;
    
 
 }
@@ -217,13 +217,15 @@ height: 36px !important;
 /* .leaflet-control-zoom  leaflet-control{
     top: 0rem;
 }
+
+    */
+
 .leaflet-touch .leaflet-control-pan a {
     position:absolute;
     left:5px;
-    top: 150px;
+    top: 112px;
     display: block !important;
 }
-    */
 .leaflet-control-layers{
     top: 1rem;
     right:0.5rem;

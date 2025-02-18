@@ -207,6 +207,12 @@ border-radius: 14%;
    
 
 }
+/* home button  */
+.leaflet-touch .leaflet-bar button {
+    width: 29px;
+    height: 25px;
+    line-height: 13px;
+}
 
 /* .leaflet-control-fullscreen-button {
 background-size: cover !important;

@@ -1,4 +1,10 @@
 
+        let home={
+            lat:30.57,
+            long:-9.07,
+            zoom:10
+        };
+        
         let parcellesLayer;  // letiable pour stocker la couche GeoJSON complète
         let allData;  // Stocker toutes les données pour filtrer sans recharger
 
@@ -266,6 +272,14 @@
             });
         });
 // CONTROLS 
+        //home button
+        L.easyButton('<i class="fa fa-home fa-lg" title="Zoom to home"></i>',(btn,map)=>{
+            map.setView([home.lat, home.long],home.zoom);
+            $(window).on("resize",()=>{
+                $("#map").height($(window).height()-10);
+                map.invalidateSize();
+            }).trigger("resize");
+        },'Zoom To Home').addTo(map);
 
         //scalebar 
         L.control.scale({
